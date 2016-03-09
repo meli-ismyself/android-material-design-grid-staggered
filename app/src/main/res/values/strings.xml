@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">PluralSight_AndroidMaterialDesign</string>
+    <string name="thumbnail">Thumbnail</string>
+    <string name="delete_image">Delete</string>
+    <string name="add_image">Add</string>
+    <string name="title">Title</string>
+    <string name="LinearViewHorizontal">LinearViewHorizontal</string>
+    <string name="LinearViewVertical">LinearViewVertical</string>
+    <string name="GridView">GridView</string>
+    <string name="StaggeredViewHorizontal">StaggeredViewHorizontal</string>
+    <string name="StaggeredViewVertical">StaggeredViewVertical</string>
+</resources>
