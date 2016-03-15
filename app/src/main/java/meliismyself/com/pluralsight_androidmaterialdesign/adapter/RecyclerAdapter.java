@@ -43,7 +43,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.MyView
         Log.d(TAG, "onBindViewHolder " + position);
         Landscape currentObj = mDataList.get(position);
         holder.setData(currentObj, position);
-        //holder.setListeners();
+        holder.setListeners();
     }
 
     @Override

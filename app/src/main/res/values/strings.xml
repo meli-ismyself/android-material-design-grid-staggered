@@ -9,4 +9,5 @@
     <string name="GridView">GridView</string>
     <string name="StaggeredViewHorizontal">StaggeredViewHorizontal</string>
     <string name="StaggeredViewVertical">StaggeredViewVertical</string>
+    <string name="title_activity_main_screen">MainScreenActivity</string>
 </resources>

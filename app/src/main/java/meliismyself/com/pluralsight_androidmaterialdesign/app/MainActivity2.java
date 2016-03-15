@@ -9,16 +9,11 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
-
-import java.util.concurrent.BrokenBarrierException;
-
 import meliismyself.com.pluralsight_androidmaterialdesign.R;
-import meliismyself.com.pluralsight_androidmaterialdesign.adapter.RecyclerAdapter;
-import meliismyself.com.pluralsight_androidmaterialdesign.adapter.RecyclerAdapterPertama;
-import meliismyself.com.pluralsight_androidmaterialdesign.model.Animal;
-import meliismyself.com.pluralsight_androidmaterialdesign.model.Landscape;
+import meliismyself.com.pluralsight_androidmaterialdesign.adapter.RecyclerAdapter2;
+import meliismyself.com.pluralsight_androidmaterialdesign.model.Landscape2;
 
-public class MainActivity extends AppCompatActivity implements Toolbar.OnMenuItemClickListener{
+public class MainActivity2 extends AppCompatActivity implements Toolbar.OnMenuItemClickListener{
 
     Toolbar toolbar;
     RecyclerView recyclerView;
@@ -87,7 +82,7 @@ public class MainActivity extends AppCompatActivity implements Toolbar.OnMenuIte
         recyclerView.setItemAnimator(new DefaultItemAnimator());*/
 
         recyclerView = (RecyclerView)findViewById(R.id.recyclerView);
-        RecyclerAdapterPertama adapter = new RecyclerAdapterPertama(this, Landscape.getData());
+        RecyclerAdapter2 adapter = new RecyclerAdapter2(this, Landscape2.getData());
         recyclerView.setAdapter(adapter);
 
         LinearLayoutManager mLinearLayoutManagerVertical = new LinearLayoutManager(this);

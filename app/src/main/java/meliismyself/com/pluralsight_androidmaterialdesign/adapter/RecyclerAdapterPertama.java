@@ -13,18 +13,19 @@ import android.widget.TextView;
 import java.util.List;
 
 import meliismyself.com.pluralsight_androidmaterialdesign.R;
+import meliismyself.com.pluralsight_androidmaterialdesign.model.Animal;
 import meliismyself.com.pluralsight_androidmaterialdesign.model.Landscape;
 
 /**
  * Created by Meli Oktavia on 3/2/2016.
  */
 public class RecyclerAdapterPertama extends RecyclerView.Adapter<RecyclerAdapterPertama.MyViewHolder> {
-    private static final String TAG = RecyclerAdapterPertama.class.getSimpleName();
-    private List<Landscape> mData;
+    private static final String TAG = RecyclerAdapter.class.getSimpleName();
+    private List<Landscape> mDataList;
     private LayoutInflater mInflater;
 
     public RecyclerAdapterPertama(Context context, List<Landscape> data) {
-        this.mData = data;
+        this.mDataList = data;
         this.mInflater = LayoutInflater.from(context);
     }
 
@@ -32,7 +33,7 @@ public class RecyclerAdapterPertama extends RecyclerView.Adapter<RecyclerAdapter
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         Log.d(TAG, "onCreateViewHolder");
-        View view = mInflater.inflate(R.layout.list_item, parent, false);
+        View view = mInflater.inflate(R.layout.list_item_1, parent, false);
         MyViewHolder holder = new MyViewHolder(view);
         return holder;
     }
@@ -40,16 +41,31 @@ public class RecyclerAdapterPertama extends RecyclerView.Adapter<RecyclerAdapter
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
         Log.d(TAG, "onBindViewHolder " + position);
-        Landscape currentObj = mData.get(position);
+        Landscape currentObj = mDataList.get(position);
         holder.setData(currentObj, position);
+        holder.setListeners();
     }
 
     @Override
     public int getItemCount() {
-        return mData.size();
+        return mDataList.size();
     }
 
-    class MyViewHolder extends RecyclerView.ViewHolder{
+    public void removeItem(int position) {
+        mDataList.remove(position);
+       // notifyItemRemoved(position);
+       // notifyItemRangeChanged(position, mDataList.size());
+        notifyDataSetChanged();
+    }
+
+    public void addItem(int position, Landscape landscape) {
+        mDataList.add(position, landscape);
+        //notifyItemInserted(position);
+        //notifyItemRangeChanged(position, mDataList.size());
+        notifyDataSetChanged();
+    }
+
+    class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         TextView title;
         ImageView imgThumb, imgDelete, imgAdd;
         int position;
@@ -68,6 +84,30 @@ public class RecyclerAdapterPertama extends RecyclerView.Adapter<RecyclerAdapter
             this.imgThumb.setImageResource(current.getImageID());
             this.position = position;
             this.current = current;
+        }
+
+
+
+        public void setListeners(){
+            imgDelete.setOnClickListener(MyViewHolder.this);
+            imgAdd.setOnClickListener(MyViewHolder.this);
+
+
+        }
+
+        @Override
+        public void onClick(View v) {
+            Log.i(TAG, "onClick before operation at position : " + position + " size " + mDataList.size());
+            switch (v.getId()){
+                case R.id.img_row_delete:
+                    removeItem(position);
+                    break;
+                case R.id.img_row_add:
+                    addItem(position, current);
+                    break;
+            }
+            Log.i(TAG, "onClick after operation - Size " + mDataList.size());
+
         }
     }
 }
